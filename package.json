@@ -1,0 +1,9 @@
+{
+    "name": "bell-lcms",
+      "description": "yup",
+      "version": "0.0.1",
+      "private": true,
+      "dependencies": {
+        "couchapp": "0.9.1"
+      }
+}

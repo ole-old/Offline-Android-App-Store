@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>BeLL LCMS</title>
+</head>
+
+
+
+  <!-- 
+    STYLES
+  -->
+
+
+
+  <link href="css/bootstrap.css" type="text/css" rel="stylesheet">
+  <style type="text/css">
+    /* custom styles */
+  </style>
+
+
+
+  <!-- 
+    DOM Center
+  -->
+
+
+
+<body>
+  <div id="app">
+    <!-- RENDER HERE -->    
+  </div>
+</body>
+
+
+
+  <!-- 
+    SCRIPTS
+  -->
+
+
+
+  <script src="js/vendor/jquery-1.7.2.js"></script>
+  <script src="js/vendor/underscore-1.4.4.js"></script>
+  <script src="js/vendor/backbone-1.0.0.js"></script>
+  <script src="js/vendor/backbone-forms.js"></script>
+  <script src="js/vendor/jquery-ui-1.10.2.custom/js/jquery-ui-1.10.2.custom.js"></script>
+  <script src="/_utils/script/json2.js"></script>
+  <script src="/_utils/script/jquery.couch.js?0.8.0"></script>
+  <script src="/_utils/script/jquery.form.js?0.9.0"></script>
+  <script src="js/vendor/sha1.js"></script>
+  <script src="js/vendor/jquery.couch.js"></script>
+  <script src="js/vendor/backbone.couchdb.js"></script>
+  <script src="js/vendor/html-encode.js"></script>
+
+
+
+  <!--
+    TEMPLATES
+  -->
+
+
+
+  <script type="text/template" id="apk-template">
+    <li><a href="http://raspberrypi.local/AdbHttpServer/index.php?op=install&apk=http://raspberrypi.local:5984/apk/<%= apk.get('id') %>/<%= fileName %>">Install <%= apk.get('title') %></a></li>
+  </script>
+
+
+
+
+  <!--
+    SETTINGS
+  -->
+
+
+
+  <script>
+    var thisDb = document.URL.split("/")[3]
+
+    Backbone.couch.options = {
+      database: thisDb,
+      design: 'apk-deployer'
+    };
+  </script>
+
+
+
+  <!-- 
+    MODELS 
+  -->
+
+
+
+  <script src="app/models/Apk.js"></script>
+
+
+
+  <!--
+    COLLECTIONS
+  -->
+
+
+
+  <script src="app/collections/Apks.js"> </script>
+
+
+
+  <!-- 
+    VIEWS
+  -->
+
+
+
+  <script src="app/views/ApksView.js"> </script> 
+  <script src="app/views/ApkView.js"> </script> 
+
+
+
+
+  <!-- 
+    App
+  -->
+
+
+
+  <script>
+
+    var apks = new Apks()
+    var apksView = new ApksView(apks)
+    $('#app').append(apksView.render())
+
+  </script>
+
+
+
+</html> 
+
